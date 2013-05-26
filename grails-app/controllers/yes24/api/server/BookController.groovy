@@ -18,7 +18,7 @@ class BookController {
         def mainHttp = new HTTPBuilder('http://www.yes24.com/24/Goods/' + bookId)
         def mainResponse
         mainHttp.get(contentType: TEXT) { resp, reader ->
-            if(reader != null) {
+            if(reader == null) {
                 render(contentType: "text/json") {
                     errorCode = '404'
                     errorMsg = 'Sorry, that book doesn’t exist!'
